@@ -1,0 +1,84 @@
+<br>
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Create</button>
+<br><br>
+<table class="table table-success table-striped">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">Price</th>
+    <th scope="col">Image</th>
+    <th colspan="2">Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let p of products">
+    <td>{{p.id}}</td>
+    <td>{{p.name}}</td>
+    <td>{{p.price}}</td>
+    <td><img src="{{p.img}}" width="200" height="250"></td>
+    <td>
+      <button (click)="delete(p.id)" type="button" class="btn btn-danger">Delete</button>
+    </td>
+    <td>
+      <button (click)="showEdit(p.id)" type="button" class="btn btn-warning" data-toggle="modal" data-target="#myModaledit">Edit</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
+<!-- Modal create-->
+<div class="modal fade" id="myModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">X</button>
+        <h4 class="modal-title">Create</h4>
+      </div>
+      <div class="modal-body">
+        Id : <input [ngModel]="id" placeholder="Id">
+        <br><br>
+        Name : <input [ngModel]="name" placeholder="Name">
+        <br><br>
+        Price : <input [ngModel]="price" placeholder="Price">
+        <br><br>
+        Image : <input [ngModel]="img" placeholder="Image">
+      </div>
+      <div class="modal-footer">
+        <button (click)="create()" type="button" class="btn btn-success" data-dismiss="modal">Save</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- Modal edit-->
+    <div class="modal fade" id="myModaledit" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">X</button>
+            <h4 class="modal-title">Edit</h4>
+          </div>
+          <div class="modal-body">
+            Id : <input [ngModel]="id" placeholder="Id">
+            <br><br>
+            Name : <input [ngModel]="name" placeholder="Name">
+            <br><br>
+            Price : <input [ngModel]="price" placeholder="Price">
+            <br><br>
+            Image : <input [ngModel]="img" placeholder="Image">
+          </div>
+          <div class="modal-footer">
+            <button (click)="Edit(id)" type="button" class="btn btn-success" data-dismiss="modal">Edit</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
